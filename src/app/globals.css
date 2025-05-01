@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Inspired by Supabase UI Dark Theme */
+@layer base {
+  :root {
+    /* Light Theme (kept original DebtCrusher for contrast, but dark is default visually) */
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 3.9%; /* Dark Gray */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 145 63% 49%; /* Friendly Green (like Supabase accent) */
+    --primary-foreground: 0 0% 98%; /* White/Light Gray for contrast on green */
+    --secondary: 0 0% 96.1%; /* Light Gray */
+    --secondary-foreground: 0 0% 9%; /* Dark Gray */
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 207 67% 53%; /* Calming Blue (kept as accent) */
+    --accent-foreground: 0 0% 98%; /* White/Light Gray for contrast on blue */
+    --destructive: 0 84.2% 60.2%; /* Default Red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 145 63% 49%; /* Use primary green for focus rings */
+    --chart-1: 145 63% 49%; /* Green */
+    --chart-2: 207 67% 53%; /* Blue */
+    --chart-3: 43 74% 66%; /* Yellowish */
+    --chart-4: 12 76% 61%; /* Reddish */
+    --chart-5: 280 65% 60%; /* Purple */
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 145 63% 49%; /* Green */
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96.1%; /* Light Gray */
+    --sidebar-accent-foreground: 0 0% 9%; /* Dark Gray */
+    --sidebar-border: 0 0% 89.8%;
+    --sidebar-ring: 145 63% 49%; /* Green */
+  }
+
+  .dark {
+    /* Dark Theme (Based on Supabase UI) */
+    --background: 240 10% 3.9%; /* Very Dark Gray/Black */
+    --foreground: 0 0% 98%; /* Light Gray/White */
+    --card: 240 6% 10%; /* Slightly Lighter Dark Gray */
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 145 55% 42%; /* Muted Green Accent */
+    --primary-foreground: 0 0% 98%; /* White/Light Gray */
+    --secondary: 240 5% 15%; /* Darker Gray */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 0 0% 63.9%; /* Lighter Gray */
+    --accent: 240 4% 18%; /* Slightly different dark gray for hover/accent */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%; /* Darker Red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%; /* Dark subtle border */
+    --input: 240 4% 16%;
+    --ring: 145 55% 42%; /* Green focus ring */
+    --chart-1: 145 55% 42%; /* Green */
+    --chart-2: 207 60% 50%; /* Blue */
+    --chart-3: 43 70% 60%; /* Yellowish */
+    --chart-4: 0 70% 60%;   /* Reddish */
+    --chart-5: 280 60% 60%; /* Purple */
+    --radius: 0.5rem; /* Rounded corners */
+    --sidebar-background: 240 8% 6%; /* Even Darker for Sidebar */
+    --sidebar-foreground: 0 0% 80%; /* Dimmer text in sidebar */
+    --sidebar-primary: 145 55% 42%; /* Green */
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 5% 15%; /* Dark Gray for hover */
+    --sidebar-accent-foreground: 0 0% 98%; /* White/Light Gray */
+    --sidebar-border: 240 4% 12%; /* Very subtle border */
+    --sidebar-ring: 145 55% 42%; /* Green */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    /* Default to dark theme visually by applying dark class */
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Apply dark theme by default */
+html {
+    @apply dark;
+}
