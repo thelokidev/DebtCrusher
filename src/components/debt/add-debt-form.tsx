@@ -18,6 +18,9 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { PlusCircle } from 'lucide-react';
 
+import logger from '@/lib/logger'; // Import the logger
+import { toast } from '@/hooks/use-toast'; // Import the toast function
+
 // Define the form schema using Zod
 const debtSchema = z.object({
   creditorName: z.string().min(1, 'Creditor name is required'),
@@ -29,7 +32,7 @@ const debtSchema = z.object({
 type DebtFormData = z.infer<typeof debtSchema>;
 
 interface AddDebtFormProps {
-  onSubmit: (data: DebtFormData) => void;
+  onSubmit: (data: DebtFormData) => Promise<void> | void; // Allow onSubmit to be async
   isLoading?: boolean;
 }
 
@@ -44,9 +47,27 @@ export function AddDebtForm({ onSubmit, isLoading = false }: AddDebtFormProps) {
     },
   });
 
-  const handleFormSubmit = (data: DebtFormData) => {
-    onSubmit(data);
-    form.reset(); // Reset form after successful submission
+  const handleFormSubmit = async (data: DebtFormData) => {
+    try {
+      await onSubmit(data); // Call the onSubmit prop, which might be async
+      toast({
+        title: 'Success!',
+        description: 'Debt added successfully.',
+        variant: 'default', // Or a custom 'success' variant if defined
+      });
+      form.reset(); // Reset form after successful submission
+    } catch (error) {
+      logger.error('Failed to submit debt form:', {
+        error: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+        formData: data,
+      });
+      toast({
+        title: 'Error',
+        description: 'Failed to add debt. Please try again.',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (

@@ -33,6 +33,31 @@ yarn dev
 
 The application will be available at http://localhost:9001
 
+## Environment Variables
+
+To run the application, you'll need to set up your environment variables:
+
+1.  Create a new file named `.env.local` in the root of the project by copying the example file:
+    ```bash
+    cp .env.example .env.local
+    ```
+2.  Open `.env.local` and fill in the required values. At a minimum, you will need to provide:
+    *   `GOOGLE_GENAI_API_KEY`: Your API key for Google AI (Genkit) services.
+
+    Refer to `.env.example` for a full list of potential environment variables.
+3.  The `.env.local` file is included in `.gitignore` and should not be committed to version control, as it contains sensitive information.
+
+## Running Tests
+
+This project uses [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit and component testing.
+
+To run the tests, use the following command:
+
+```bash
+npm test
+```
+(If you use Yarn, you can run `yarn test`.)
+
 ## Features
 
 - Track multiple debts and payment plans
